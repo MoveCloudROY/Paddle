@@ -126,7 +126,14 @@ void ApplyPdToCinnPass(
   std::shared_ptr<pir::PassManager> pass_manager = CreatePassManager();
   pass_manager->AddPass(cinn::dialect::ir::CreateReduceAsToSumPass());
   pass_manager->AddPass(cinn::dialect::ir::CreateReplaceZeroScaleToFullPass());
+#if (defined(PADDLE_WITH_CUDA) && CUDA_VERSION >= 11060) || \
+    defined(PADDLE_WITH_HIP)
+
+#ifndef CINN_WITH_Z100
   pass_manager->AddPass(pir::CreateFusedGemmEpiloguePass());
+#endif
+
+#endif
   if (FLAGS_enable_fuse_parallel_matmul_pass) {
     pass_manager->AddPass(cinn::dialect::ir::CreateFuseParallelMatmulPass());
   }

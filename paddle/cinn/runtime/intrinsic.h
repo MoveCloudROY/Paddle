@@ -113,11 +113,11 @@ static const char* call_cuda_memset = "cinn_call_cuda_memset";
 static const char* get_value_in_cuda_kernel_args =
     "cinn_get_value_in_cuda_kernel_args";
 
-static const char* get_item_in_cuda_kernel_args =
-    "cinn_get_item_in_cuda_kernel_args";
-
 static const char* get_value_in_hip_kernel_args =
     "cinn_get_value_in_hip_kernel_args";
+
+static const char* get_item_in_cuda_kernel_args =
+    "cinn_get_item_in_cuda_kernel_args";
 
 static const char* get_item_in_hip_kernel_args =
     "cinn_get_item_in_hip_kernel_args";
