@@ -5,6 +5,8 @@ if(WITH_GPU)
   endif()
 endif()
 
+return()
+
 add_executable(print_phi_kernels print_phi_kernels.cc)
 target_link_libraries(print_phi_kernels phi common)
 

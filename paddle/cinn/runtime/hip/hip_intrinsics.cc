@@ -37,6 +37,23 @@ CINN_REGISTER_HELPER(cinn_hip_host_api) {
       .AddInputType<int>()     // shared_memory_bytes
       .AddInputType<void *>()  // stream
       .End();
+
+  using cinn::runtime::hip::cinn_get_value_in_hip_kernel_args;
+  REGISTER_EXTERN_FUNC_HELPER(cinn_get_value_in_hip_kernel_args,
+                              cinn::common::DefaultHostTarget())
+      .SetRetType<int64_t>()
+      .AddInputType<void *>()  // args
+      .AddInputType<int>()     // index
+      .End();
+
+  using cinn::runtime::hip::cinn_get_item_in_hip_kernel_args;
+  REGISTER_EXTERN_FUNC_HELPER(cinn_get_item_in_hip_kernel_args,
+                              cinn::common::DefaultHostTarget())
+      .SetRetType<void *>()
+      .AddInputType<void *>()  // args
+      .AddInputType<int>()     // index
+      .End();
+
   using cinn::runtime::hip::infer_shape_set_value;
   REGISTER_EXTERN_FUNC_HELPER(infer_shape_set_value,
                               cinn::common::DefaultHostTarget())

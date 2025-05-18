@@ -50,8 +50,12 @@ ir::Module CreateSwitchWithBroadcastConditionModule(
     for (const auto &item : symbolic_shape_var_index) {
       ir::Expr call_get_value_in_kernel_args =
           ir::Call::Make(Int(64),
+#if defined(CINN_WITH_CUDA)
                          runtime::intrinsic::get_value_in_cuda_kernel_args,
-                         {kernel_args, ir::Expr(item.first)},
+#elif defined(CINN_WITH_HIP)
+                         runtime::intrinsic::get_value_in_hip_kernel_args,
+#endif
+			 {kernel_args, ir::Expr(item.first)},
                          {},
                          ir::CallType::Extern,
                          ir::FunctionRef(),
@@ -329,8 +333,12 @@ void detail::CollectBucketStrategyHostFunctionVisitor::ProcessArgs(
     if (args[i].is_var()) {
       ir::Expr call_get_value_in_kernel_args =
           ir::Call::Make(Int(64),
+#if defined(CINN_WITH_CUDA)
                          runtime::intrinsic::get_value_in_cuda_kernel_args,
-                         {kernel_args_, ir::Expr(i)},
+#elif defined(CINN_WITH_HIP)
+                         runtime::intrinsic::get_value_in_hip_kernel_args,
+#endif
+			 {kernel_args_, ir::Expr(i)},
                          {},
                          ir::CallType::Extern,
                          ir::FunctionRef(),

@@ -95,7 +95,7 @@ struct CUBlas<float> {
 
   template <typename... ARGS>
   static void TRSM_BATCH(ARGS... args) {
-#if HIP_VERSION >= 30000000
+#if 0 && HIP_VERSION >= 30000000
     PADDLE_ENFORCE_GPU_SUCCESS(phi::dynload::rocblas_strsm_batched(args...));
 #else
     PADDLE_THROW(common::errors::Unimplemented(
@@ -168,7 +168,7 @@ struct CUBlas<double> {
 
   template <typename... ARGS>
   static void TRSM_BATCH(ARGS... args) {
-#if HIP_VERSION >= 30000000
+#if 0 && HIP_VERSION >= 30000000
     PADDLE_ENFORCE_GPU_SUCCESS(phi::dynload::rocblas_dtrsm_batched(args...));
 #else
     PADDLE_THROW(common::errors::Unimplemented(

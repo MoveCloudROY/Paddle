@@ -105,5 +105,6 @@ PD_REGISTER_KERNEL(all_reduce,
                    uint8_t,
                    int16_t,
                    int64_t,
+		   phi::dtype::bfloat16,
                    phi::dtype::float16) {}
 #endif

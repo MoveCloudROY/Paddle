@@ -647,9 +647,9 @@ if(WITH_CUSPARSELT)
 endif()
 
 if(WITH_ROCM)
-  include(external/flashattn)
-  list(APPEND third_party_deps extern_flashattn)
-  set(WITH_FLASHATTN ON)
+	# include(external/flashattn)
+	# list(APPEND third_party_deps extern_flashattn)
+	set(WITH_FLASHATTN OFF)
 endif()
 
 if(WITH_GPU

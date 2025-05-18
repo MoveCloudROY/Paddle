@@ -68,7 +68,7 @@ class ModelSearcher:
                     
         root_path = os.path.join(os.getcwd(), "tune_log")
             
-        target_str = f"{target.arch_str()}_{target.device_name_str()}"
+        target_str = f"HygonDCU_BW200_64G"
         
         check_exist(root_path)
         check_exist(os.path.join(root_path, target_str))
