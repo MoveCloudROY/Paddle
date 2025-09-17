@@ -245,7 +245,7 @@ std::string SYCLBackendAPI::GetGpuVersion() {
   ::sycl::device device = this->devices[now_device_id];
   ::sycl::backend backend = device.get_backend();
   switch (backend) {
-    case ::sycl::backend::cuda: {
+    case ::sycl::backend::ext_oneapi_cuda: {
       std::string gpu_version = "sm_";
       std::string version_with_point =
           device.get_info<::sycl::info::device::driver_version>();
